@@ -7,8 +7,9 @@ import {
   Route
 } from "react-router-dom";
 import { withAuth0 } from '@auth0/auth0-react';
-
-
+import Home from './components/Home';
+import Login from './components/Login';
+import FavFlowers from './components/FavFlowers';
 class App extends React.Component {
 
   render() {
@@ -21,9 +22,11 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/">
                 {/* TODO: if the user is logged in, render the `Home` component, if they are not, render the `Login` component */}
+                {isAuthenticated ? <Home/> :<Login/>}
               </Route>
               <Route exact path="/favFlowers">
                 {/* TODO: if the user is logged in, render the `FavFlowers` component, if they are not, render the `Login` component */}
+                {isAuthenticated ? <FavFlowers/> :<Login/>}
               </Route>
             </Switch>
             <Footer />
